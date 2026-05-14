@@ -1,0 +1,15 @@
+/.vscode
+/calc.cpp
+/mini os
+/p2p chat.cpp
+/port scanner
+
+.DS_Store
+
+/AES/passmgr
+/AES/*.cpm
+/AES/*.tmp
+/AES/*.tmp.*
+/AES/*.o
+/AES/*.dSYM
+/AES/build/
