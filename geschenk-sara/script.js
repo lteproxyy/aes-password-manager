@@ -35,7 +35,11 @@ const loveReasons = [
   "ich bin immer für dich da mein herz",
 
   // Weitere Liebessätze hier hinzufügen:
-  // "dein neuer satz",
+  // "grund 1 hier reinschreiben",
+  // "grund 2 hier reinschreiben",
+  // "grund 3 hier reinschreiben",
+  // "grund 4 hier reinschreiben",
+  // "grund 5 hier reinschreiben",
 ];
 
 const bestMoments = [
@@ -55,7 +59,11 @@ const bestMoments = [
   "im unterricht wenn ich schreie dass ich dich liebe",
 
   // Weitere Erinnerungen hier hinzufügen:
-  // "deine neue erinnerung",
+  // "erinnerung 1 hier reinschreiben",
+  // "erinnerung 2 hier reinschreiben",
+  // "erinnerung 3 hier reinschreiben",
+  // "erinnerung 4 hier reinschreiben",
+  // "erinnerung 5 hier reinschreiben",
 ];
 
 const photoSlots = [
