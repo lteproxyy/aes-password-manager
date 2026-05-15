@@ -209,10 +209,12 @@ button {
 .intro-card {
   position: relative;
   width: min(100%, 440px);
+  min-height: 250px;
   padding: 30px 22px 24px;
   border-radius: 28px;
   text-align: left;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .intro-card::after {
@@ -240,7 +242,7 @@ button {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 12px;
+  gap: 14px;
   justify-items: start;
 }
 
@@ -250,8 +252,9 @@ button {
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  min-height: 46px;
-  padding: 12px 15px;
+  min-width: min(100%, 10rem);
+  min-height: 58px;
+  padding: 14px 18px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 20px;
   color: var(--white);
@@ -265,9 +268,10 @@ button {
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
   font-weight: 900;
   line-height: 1.15;
-  text-align: left;
+  text-align: center;
   text-wrap: balance;
   cursor: pointer;
+  touch-action: manipulation;
   opacity: 0;
   transform: translateY(18px) scale(0.78);
   transform-origin: center;
@@ -302,7 +306,7 @@ button {
 .intro-bubble-small {
   border-radius: 999px;
   color: var(--rose);
-  font-size: 0.88rem;
+  font-size: 1rem;
   text-transform: lowercase;
 }
 
@@ -335,9 +339,10 @@ button {
 }
 
 .intro-bubble-wide {
+  justify-self: center;
   max-width: min(100%, 23rem);
   color: rgba(255, 248, 253, 0.84);
-  font-size: 1rem;
+  font-size: 1.04rem;
   line-height: 1.35;
 }
 

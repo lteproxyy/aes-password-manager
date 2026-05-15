@@ -81,6 +81,7 @@ const miniTexts = {
 const introScreen = document.querySelector("#introScreen");
 const appShell = document.querySelector("#appShell");
 const openButton = document.querySelector("#openButton");
+const introCard = document.querySelector(".intro-card");
 const introBubbles = Array.from(document.querySelectorAll("[data-intro-step]"));
 const introHello = document.querySelector("#introHello");
 const introNickname = document.querySelector("#introNickname");
@@ -145,8 +146,13 @@ function setupIntroBubbles() {
     bubble.hidden = index !== 0;
     bubble.classList.toggle("is-visible", index === 0);
     bubble.classList.remove("is-tapped");
-    bubble.addEventListener("click", () => revealNextIntroBubble(index));
+    bubble.addEventListener("click", (event) => {
+      event.stopPropagation();
+      revealNextIntroBubble(index);
+    });
   });
+
+  introCard.addEventListener("click", revealCurrentIntroBubble);
 }
 
 function revealNextIntroBubble(index) {
@@ -175,6 +181,25 @@ function revealNextIntroBubble(index) {
     openButton.classList.add("is-visible");
   });
   createHeartBurst(openButton, 14, true);
+}
+
+function revealCurrentIntroBubble(event) {
+  const clickedOpenButton =
+    event.target &&
+    typeof event.target.closest === "function" &&
+    event.target.closest("#openButton");
+
+  if (clickedOpenButton) {
+    return;
+  }
+
+  const currentBubble = introBubbles[currentIntroStep];
+
+  if (!currentBubble) {
+    return;
+  }
+
+  revealNextIntroBubble(currentIntroStep);
 }
 
 function openApp() {
