@@ -65,8 +65,6 @@ const finalMessage = [
 const finalSignature = "für immer dein mensch";
 
 const miniTexts = {
-  hero:
-    "yo mate, das hier ist nur für dich. bisschen weich, bisschen verliebt, aber rabbi ohne spaß komplett ehrlich.",
   counterTitle: "seit dem 13.01.2026 bist du mein lieblingsmensch ❤️",
   reasonIdle: "drück auf den knopf, ich hab da paar sachen gesammelt wa dikka ❤️",
   memoryIdle: "hier wohnen unsere kleinen momente, die ich nie vergessen will ✨",
@@ -83,12 +81,12 @@ const miniTexts = {
 const introScreen = document.querySelector("#introScreen");
 const appShell = document.querySelector("#appShell");
 const openButton = document.querySelector("#openButton");
+const introBubbles = Array.from(document.querySelectorAll("[data-intro-step]"));
 const introHello = document.querySelector("#introHello");
 const introNickname = document.querySelector("#introNickname");
 
 const heroHello = document.querySelector("#heroHello");
 const heroNickname = document.querySelector("#heroNickname");
-const heroText = document.querySelector("#heroText");
 const counterTitle = document.querySelector("#counterTitle");
 const daysCount = document.querySelector("#daysCount");
 const hoursCount = document.querySelector("#hoursCount");
@@ -117,6 +115,7 @@ let reasonClicks = 0;
 let lastReason = "";
 let lastMoment = "";
 let finaleShown = false;
+let currentIntroStep = 0;
 
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
@@ -124,7 +123,6 @@ function init() {
   introNickname.textContent = `${nickname.toLowerCase()} ❤️`;
   heroHello.textContent = `hey ${personName.toLowerCase()},`;
   heroNickname.textContent = `${nickname.toLowerCase()} ❤️`;
-  heroText.textContent = miniTexts.hero;
   counterTitle.textContent = miniTexts.counterTitle;
   reasonText.textContent = miniTexts.reasonIdle;
   memoryText.textContent = miniTexts.memoryIdle;
@@ -133,8 +131,50 @@ function init() {
   finaleText.innerHTML = finalMessage.map((line) => escapeHtml(line)).join("<br><br>");
   finaleSignature.textContent = finalSignature;
 
+  setupIntroBubbles();
   updateCounter();
   window.setInterval(updateCounter, 1000);
+}
+
+function setupIntroBubbles() {
+  currentIntroStep = 0;
+  openButton.hidden = true;
+  openButton.classList.remove("is-visible");
+
+  introBubbles.forEach((bubble, index) => {
+    bubble.hidden = index !== 0;
+    bubble.classList.toggle("is-visible", index === 0);
+    bubble.classList.remove("is-tapped");
+    bubble.addEventListener("click", () => revealNextIntroBubble(index));
+  });
+}
+
+function revealNextIntroBubble(index) {
+  if (index !== currentIntroStep) {
+    return;
+  }
+
+  const currentBubble = introBubbles[index];
+  currentBubble.classList.add("is-tapped");
+  createHeartBurst(currentBubble, 7, false);
+  vibrate(10);
+
+  const nextBubble = introBubbles[index + 1];
+  currentIntroStep += 1;
+
+  if (nextBubble) {
+    nextBubble.hidden = false;
+    window.requestAnimationFrame(() => {
+      nextBubble.classList.add("is-visible");
+    });
+    return;
+  }
+
+  openButton.hidden = false;
+  window.requestAnimationFrame(() => {
+    openButton.classList.add("is-visible");
+  });
+  createHeartBurst(openButton, 14, true);
 }
 
 function openApp() {
