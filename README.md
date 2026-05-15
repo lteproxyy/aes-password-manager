@@ -34,10 +34,10 @@ Du brauchst keine Installation.
 3. Standardmäßig sucht die Seite nach:
 
 ```text
-bilder/foto-1.jpg
-bilder/foto-2.jpg
-bilder/foto-3.jpg
-bilder/foto-4.jpg
+bilder/sara:bilder:foto-1.jpg
+bilder/sara:bilder:foto-2.jpg
+bilder/sara:bilder:foto-3.jpg
+bilder/sara:bilder:foto-4.jpg
 ```
 
 Wenn deine Dateien anders heißen, ändere in `script.js` den Bereich `photoSlots`:
@@ -45,7 +45,7 @@ Wenn deine Dateien anders heißen, ändere in `script.js` den Bereich `photoSlot
 ```js
 const photoSlots = [
   {
-    src: "bilder/foto-1.jpg",
+    src: "bilder/sara:bilder:foto-1.jpg",
     caption: "bild 1",
   },
 ];

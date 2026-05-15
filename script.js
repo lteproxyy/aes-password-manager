@@ -60,19 +60,19 @@ const bestMoments = [
 
 const photoSlots = [
   {
-    src: "bilder/foto-1.jpg",
+    src: "bilder/sara:bilder:foto-1.jpg",
     caption: "bild 1",
   },
   {
-    src: "bilder/foto-2.jpg",
+    src: "bilder/sara:bilder:foto-2.jpg",
     caption: "bild 2",
   },
   {
-    src: "bilder/foto-3.jpg",
+    src: "bilder/sara:bilder:foto-3.jpg",
     caption: "bild 3",
   },
   {
-    src: "bilder/foto-4.jpg",
+    src: "bilder/sara:bilder:foto-4.jpg",
     caption: "bild 4",
   },
 
