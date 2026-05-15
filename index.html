@@ -136,10 +136,16 @@
             <p class="section-kicker">kleiner soundtrack</p>
             <h2 id="musicTitle">musik</h2>
           </div>
-          <button class="button music-button" id="musicButton" type="button" aria-pressed="false">
-            <span class="music-icon" aria-hidden="true">♪</span>
-            <span>musik 🎵</span>
-          </button>
+          <div class="music-controls">
+            <button class="button music-button" id="musicButton" type="button" aria-pressed="false">
+              <span class="music-icon" aria-hidden="true">♪</span>
+              <span>musik 🎵</span>
+            </button>
+            <label class="volume-control" for="volumeSlider">
+              <span>lautstärke</span>
+              <input id="volumeSlider" type="range" min="0" max="100" value="60" />
+            </label>
+          </div>
         </div>
 
         <div class="song-strip">

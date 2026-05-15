@@ -750,9 +750,17 @@ button {
 
 .music-main {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+}
+
+.music-controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
 }
 
 .music-button {
@@ -771,6 +779,46 @@ button {
   background: rgba(255, 255, 255, 0.16);
   color: var(--rose);
   font-size: 1.05rem;
+}
+
+.volume-control {
+  display: grid;
+  gap: 6px;
+  min-width: 104px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.volume-control span {
+  color: rgba(255, 248, 253, 0.74);
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+}
+
+.volume-control input {
+  width: 100%;
+  height: 22px;
+  accent-color: var(--pink);
+  cursor: pointer;
+}
+
+@media (max-width: 430px) {
+  .music-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .music-button {
+    flex: 1 1 auto;
+  }
+
+  .volume-control {
+    flex: 0 0 118px;
+  }
 }
 
 .song-strip {

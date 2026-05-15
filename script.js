@@ -100,6 +100,7 @@ const miniTexts = {
   musicReady: "startet nach dem passwort.",
   musicPlaying: "läuft im hintergrund für dich.",
   musicPaused: "ohne musik geht auch",
+  musicBlocked: "wenn safari blockt, drück einmal auf musik 🎵",
   musicMissing: "song.mp3 fehlt noch, leg die datei in den sara ordner ❤️",
 };
 
@@ -140,6 +141,7 @@ const musicPanel = document.querySelector("#musicPanel");
 const musicButton = document.querySelector("#musicButton");
 const musicStatus = document.querySelector("#musicStatus");
 const songTitleText = document.querySelector("#songTitleText");
+const volumeSlider = document.querySelector("#volumeSlider");
 const loveSong = document.querySelector("#loveSong");
 
 let reasonClicks = 0;
@@ -152,7 +154,7 @@ let musicStartedOnce = false;
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
   passwordInput.placeholder = "(kleiner tipp: datum)";
-  loveSong.volume = 0.6;
+  setMusicVolume(volumeSlider.value);
   counterTitle.textContent = miniTexts.counterTitle;
   reasonText.textContent = miniTexts.reasonIdle;
   memoryText.textContent = miniTexts.memoryIdle;
@@ -430,6 +432,11 @@ function vibrate(pattern) {
   }
 }
 
+function setMusicVolume(value) {
+  const nextVolume = Math.min(100, Math.max(0, Number(value))) / 100;
+  loveSong.volume = Number.isNaN(nextVolume) ? 0.6 : nextVolume;
+}
+
 async function startBackgroundMusic() {
   if (!loveSong) {
     return;
@@ -445,7 +452,7 @@ async function startBackgroundMusic() {
     musicStartedOnce = true;
     updateMusicState(true, miniTexts.musicPlaying);
   } catch (error) {
-    updateMusicState(false, miniTexts.musicMissing);
+    updateMusicState(false, getMusicErrorMessage());
   }
 }
 
@@ -469,6 +476,14 @@ function updateMusicState(isPlaying, status) {
   musicStatus.textContent = status;
 }
 
+function getMusicErrorMessage() {
+  if (loveSong.error) {
+    return miniTexts.musicMissing;
+  }
+
+  return miniTexts.musicBlocked;
+}
+
 function escapeHtml(value) {
   return value
     .replaceAll("&", "&amp;")
@@ -483,6 +498,9 @@ passwordForm.addEventListener("submit", unlockApp);
 reasonButton.addEventListener("click", showRandomReason);
 memoryButton.addEventListener("click", showRandomMemory);
 musicButton.addEventListener("click", toggleMusic);
+volumeSlider.addEventListener("input", () => {
+  setMusicVolume(volumeSlider.value);
+});
 loveSong.addEventListener("ended", () => updateMusicState(false, miniTexts.musicPaused));
 loveSong.addEventListener("error", () => {
   if (!musicStartedOnce) {
