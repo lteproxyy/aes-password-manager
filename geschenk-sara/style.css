@@ -827,9 +827,29 @@ button {
   gap: 10px;
 }
 
+.music-action {
+  display: grid;
+  flex: 0 0 auto;
+  justify-items: center;
+  gap: 5px;
+  min-width: 148px;
+}
+
+.music-tip {
+  max-width: 158px;
+  margin: 0;
+  color: rgba(255, 248, 253, 0.58);
+  font-size: 0.62rem;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+}
+
 .music-button {
   flex: 0 0 auto;
   gap: 8px;
+  width: 100%;
   min-height: 52px;
   padding-inline: 16px;
 }
@@ -876,8 +896,17 @@ button {
     justify-content: space-between;
   }
 
-  .music-button {
+  .music-action {
     flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .music-button {
+    width: 100%;
+  }
+
+  .music-tip {
+    max-width: 170px;
   }
 
   .volume-control {
