@@ -21,73 +21,78 @@ const songTitle = "AzadiJihan - Derya Dilê";
 
 const loveReasons = [
   "du malst meine graue welt bunt",
-  "du bist die erste und letzte frau in meinem leben mein alles",
+  "weil mich alles an dich erinnert",
   "du bist die tollste, hübscheste, gebildetste, intelligenteste, sympathischste und perfekteste frau die auf dieser welt lebt",
   "ich vermisse jeden moment den ich ohne dich erlebe",
   "az jî te hazdekim dîlemin",
   "du machst jeden noch so langweiligen moment so schön und wertvoll",
   "ich liebe es wie wir immer zusammen lachen",
-  "immer wenn ich in meinem zimmer bin vermisse ich dich ein stück mehr",
-  "ich liebe dein lachen so sehr und genieße jede sekunde davon",
-  "oh mein baby",
+  "weil mich alles an dich erinnert",
+  "dein lächeln ist so süß und perfekt du siehst so wunderschön aus wenn du lachst",
+  "weil du die frau bist mit der ich alt werden will",
   "du bist der einzige mensch bei dem ich mich komplett wohl fühle und dem ich 100% vertraue",
-  "versprochen du für immer",
-  "ich bin immer für dich da mein herz",
+  "weil ich dein essen liebe",
+  "weil man dir alleserzählen kann",
 
   // Weitere Liebessätze hier hinzufügen:
-  // "grund 1 hier reinschreiben",
-  // "grund 2 hier reinschreiben",
-  // "grund 3 hier reinschreiben",
-  // "grund 4 hier reinschreiben",
-  // "grund 5 hier reinschreiben",
+  // "weil wir so lustige insider haben",
+  // "weil du eine vernünftige frau in dieser generation bist und nicht materialistisch etc bist wie alle anderen",
+  // "weil du einfach anders bist meine einzigartige sara",
+  // "weil du gut in brawlstars bist",
+  // "",
 ];
 
 const bestMoments = [
   "die ersten wintertage bei -10° wo ich dir meine jacke gegeben habe",
   "wo wir nachts bis um 5:00 geschrieben haben obwohl wir am nächsten tag schule hatten",
   "jeder augenkontakt mit dir",
-  "wo ich realisiert habe wie sehr ich dich liebe",
-  "unsere momente wo wir uns einfach komplett dumm verhalten und uns tot lachen",
-  "dein lächeln",
+  "der tag an dem ich realisiert habe das ich nie wieder ohne dich leben will",
+  "wenn wir uns wie downies verhalten",
+  "wenn du lächelst",
   "die momente wo wir nur füreinander sind ohne jemand anderen",
   "wenn ich dich rage und du es gar nicht lustig findest",
-  "immer wenn wir bei mir zusammen sind und kochen",
+  "unsere shawarma montage",
   "die zeit mit dir die so schnell vergeht aber die schönste ist die ich jemals erlebt habe",
   "wenn wir einfach nebeneinander liegen und uns küssen",
   "unsere umarmungen",
   "wenn wir uns gegenseitig nerven aber trotzdem lachen und uns lieben",
-  "im unterricht wenn ich schreie dass ich dich liebe",
+  "wenn ich dich halb anbrülle im unterricht das ich dich liebe",
 
   // Weitere Erinnerungen hier hinzufügen:
-  // "erinnerung 1 hier reinschreiben",
-  // "erinnerung 2 hier reinschreiben",
-  // "erinnerung 3 hier reinschreiben",
-  // "erinnerung 4 hier reinschreiben",
-  // "erinnerung 5 hier reinschreiben",
+  // "wo ich abends noch vor dein fenster gekommen bin und diesen kleinen liebestext in der schhokoladen tafel von dir gekriegt habe",
+  // "",
+  // "unser erster kuss auf UNSERER bank",
+  // "die krakau fahrt im allgemeinen jeder tag",
+  // "06.03.2026",
 ];
 
 const photoSlots = [
   {
     src: "bilder/sara:bilder:foto-1.jpg",
     caption: "bild 1",
+    info: "hier deinen text zu bild 1 reinschreiben",
   },
   {
     src: "bilder/sara:bilder:foto-2.jpg",
     caption: "bild 2",
+    info: "hier deinen text zu bild 2 reinschreiben",
   },
   {
     src: "bilder/sara:bilder:foto-3.jpg",
     caption: "bild 3",
+    info: "hier deinen text zu bild 3 reinschreiben",
   },
   {
     src: "bilder/sara:bilder:foto-4.jpg",
     caption: "bild 4",
+    info: "hier deinen text zu bild 4 reinschreiben",
   },
 
   // Weitere Bilder hier hinzufügen:
   // {
   //   src: "bilder/dein-bild.jpg",
   //   caption: "dein text",
+  //   info: "dein kleiner info-text",
   // },
 ];
 
@@ -322,6 +327,9 @@ function renderPhotoSlots() {
     const placeholder = document.createElement("div");
     const icon = document.createElement("span");
     const caption = document.createElement("p");
+    const infoButton = document.createElement("button");
+    const infoBubble = document.createElement("div");
+    const infoId = `photoInfo${index + 1}`;
 
     card.className = "photo-card";
     image.src = photo.src;
@@ -331,6 +339,28 @@ function renderPhotoSlots() {
     icon.className = "photo-icon";
     icon.textContent = "♡";
     caption.textContent = photo.caption || `bild ${index + 1}`;
+    infoButton.className = "photo-info-button";
+    infoButton.type = "button";
+    infoButton.textContent = "i";
+    infoButton.setAttribute("aria-label", `info zu bild ${index + 1}`);
+    infoButton.setAttribute("aria-expanded", "false");
+    infoButton.setAttribute("aria-controls", infoId);
+    infoBubble.className = "photo-info-bubble";
+    infoBubble.id = infoId;
+    infoBubble.hidden = true;
+    infoBubble.textContent = photo.info || `kleiner text zu bild ${index + 1}`;
+
+    infoButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = card.classList.toggle("is-info-open");
+      infoButton.setAttribute("aria-expanded", String(isOpen));
+      infoBubble.hidden = !isOpen;
+      closePhotoInfos(card);
+    });
+
+    infoBubble.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
 
     image.addEventListener("load", () => {
       card.classList.add("has-photo");
@@ -342,8 +372,29 @@ function renderPhotoSlots() {
     });
 
     placeholder.append(icon, caption);
-    card.append(image, placeholder);
+    card.append(image, placeholder, infoButton, infoBubble);
     photoGrid.append(card);
+  });
+}
+
+function closePhotoInfos(exceptCard = null) {
+  document.querySelectorAll(".photo-card.is-info-open").forEach((card) => {
+    if (card === exceptCard) {
+      return;
+    }
+
+    const button = card.querySelector(".photo-info-button");
+    const bubble = card.querySelector(".photo-info-bubble");
+
+    card.classList.remove("is-info-open");
+
+    if (button) {
+      button.setAttribute("aria-expanded", "false");
+    }
+
+    if (bubble) {
+      bubble.hidden = true;
+    }
   });
 }
 
@@ -508,6 +559,7 @@ passwordForm.addEventListener("submit", unlockApp);
 reasonButton.addEventListener("click", showRandomReason);
 memoryButton.addEventListener("click", showRandomMemory);
 musicButton.addEventListener("click", toggleMusic);
+document.addEventListener("click", () => closePhotoInfos());
 volumeSlider.addEventListener("input", () => {
   setMusicVolume(volumeSlider.value);
 });
