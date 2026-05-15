@@ -150,6 +150,7 @@ let currentIntroStep = 0;
 
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
+  passwordInput.placeholder = "(kleiner tipp: datum)";
   counterTitle.textContent = miniTexts.counterTitle;
   reasonText.textContent = miniTexts.reasonIdle;
   memoryText.textContent = miniTexts.memoryIdle;
