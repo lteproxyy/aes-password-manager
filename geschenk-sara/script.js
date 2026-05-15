@@ -95,8 +95,8 @@ const miniTexts = {
   hero:
     "ich habe das programmiert um dir zu zeigen wie sehr ich in dich verliebt bin und damit du 24/7 sehen kannst wieso ich dich so sehr liebe",
   counterTitle: "seit dem 13.01.2026 bist du mein lieblingsmensch ❤️",
-  reasonIdle: "drück drauf mein herz",
-  memoryIdle: "hier sind coole errinerungen",
+  reasonIdle: "kleinigkeiten wieso ich dich liebe",
+  memoryIdle: "meine lieblingsmomente",
   musicReady: "startet nach dem passwort.",
   musicPlaying: "läuft im hintergrund für dich.",
   musicPaused: "ohne musik geht auch",
