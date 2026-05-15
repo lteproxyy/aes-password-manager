@@ -117,8 +117,6 @@ const passwordForm = document.querySelector("#passwordForm");
 const passwordInput = document.querySelector("#passwordInput");
 const passwordStatus = document.querySelector("#passwordStatus");
 
-const heroHello = document.querySelector("#heroHello");
-const heroNickname = document.querySelector("#heroNickname");
 const counterTitle = document.querySelector("#counterTitle");
 const daysCount = document.querySelector("#daysCount");
 const hoursCount = document.querySelector("#hoursCount");
@@ -152,8 +150,6 @@ let currentIntroStep = 0;
 
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
-  heroHello.textContent = `hey ${personName.toLowerCase()},`;
-  heroNickname.textContent = `${nickname.toLowerCase()} ❤️`;
   counterTitle.textContent = miniTexts.counterTitle;
   reasonText.textContent = miniTexts.reasonIdle;
   memoryText.textContent = miniTexts.memoryIdle;
