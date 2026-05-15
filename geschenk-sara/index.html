@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#16081f" />
+    <title>Warum ich dich liebe ❤️</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <div class="stars stars-one"></div>
+      <div class="stars stars-two"></div>
+      <div class="floating-hearts">
+        <span>❤️</span>
+        <span>♡</span>
+        <span>💗</span>
+        <span>♡</span>
+        <span>❤️</span>
+        <span>💞</span>
+      </div>
+    </div>
+
+    <section class="intro-screen" id="introScreen">
+      <div class="intro-card">
+        <div class="intro-bubbles" id="introBubbles">
+          <button class="intro-bubble intro-bubble-small" id="introHello" type="button" data-intro-step="0">
+            sara
+          </button>
+          <button class="intro-bubble intro-bubble-name" id="introNickname" type="button" data-intro-step="1" hidden>
+            dîlemin❤️
+          </button>
+          <button class="intro-bubble intro-bubble-main" type="button" data-intro-step="2" hidden>
+            meine frau
+          </button>
+          <button class="intro-bubble intro-bubble-small intro-bubble-right" type="button" data-intro-step="3" hidden>
+            was soll ich sagen
+          </button>
+          <button class="intro-bubble intro-bubble-wide" type="button" data-intro-step="4" hidden>
+            ich liebe dich so unnormal sehr ich muss es dir ja irgendwie zeigen
+          </button>
+        </div>
+        <button class="button button-primary intro-final-button" id="openButton" type="button" hidden>
+          drück drauf❤️
+        </button>
+      </div>
+    </section>
+
+    <section class="password-screen" id="passwordScreen" hidden>
+      <div class="password-card">
+        <h2>wenn du errätst dann erwartet dich was schönes</h2>
+        <form class="password-form" id="passwordForm">
+          <label class="sr-only" for="passwordInput">(kleiner tipp: datum)</label>
+          <input
+            id="passwordInput"
+            type="password"
+            inputmode="decimal"
+            autocomplete="new-password"
+            placeholder="(kleiner tipp: datum)"
+            aria-describedby="passwordStatus"
+          />
+          <button class="button button-primary full-button" type="submit">drück</button>
+        </form>
+        <p class="password-status" id="passwordStatus">kleiner test ob du es verdient hast</p>
+      </div>
+    </section>
+
+    <main class="app-shell" id="appShell" hidden>
+      <header class="hero">
+        <p class="eyebrow">warum ich dich liebe ❤️</p>
+        <h2 id="heroTitle">hallo dîlemin</h2>
+      </header>
+
+      <section class="glass-panel counter-panel" aria-labelledby="counterTitle">
+        <div class="section-top">
+          <h2 id="counterTitle"></h2>
+        </div>
+
+        <div class="counter-grid" aria-live="polite">
+          <div class="counter-box">
+            <span class="counter-number" id="daysCount">0</span>
+            <span class="counter-label">tage</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-number" id="hoursCount">0</span>
+            <span class="counter-label">stunden</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-number" id="minutesCount">0</span>
+            <span class="counter-label">minuten</span>
+          </div>
+        </div>
+
+        <p class="together-line" id="togetherLine">0 tage zusammen</p>
+      </section>
+
+      <section class="glass-panel photo-panel" aria-labelledby="photosTitle">
+        <div class="section-top">
+          <p class="section-kicker" id="photosTitle">vier schöne bilder von uns</p>
+        </div>
+
+        <div class="photo-grid" id="photoGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="glass-panel generator-panel" aria-labelledby="generatorTitle">
+        <div class="section-top">
+          <h2 id="generatorTitle">warum ich dich so krank liebe</h2>
+        </div>
+
+        <div class="message-card message-card-love" id="reasonCard" aria-live="polite">
+          <p id="reasonText"></p>
+        </div>
+
+        <button class="button button-primary full-button" id="reasonButton" type="button">
+          gib mir einen grund ❤️
+        </button>
+      </section>
+
+      <section class="glass-panel memories-panel" aria-labelledby="memoriesTitle">
+        <div class="section-top">
+          <h2 id="memoriesTitle">unsere tollen momente</h2>
+        </div>
+
+        <div class="message-card message-card-memory" id="memoryCard" aria-live="polite">
+          <p id="memoryText"></p>
+        </div>
+
+        <button class="button button-primary full-button" id="memoryButton" type="button">
+          gib mir eine errinerung ❤️
+        </button>
+      </section>
+
+      <section class="glass-panel music-panel" id="musicPanel" aria-labelledby="musicTitle">
+        <div class="music-main">
+          <div>
+            <p class="section-kicker">kleiner soundtrack</p>
+            <h2 id="musicTitle">musik</h2>
+          </div>
+          <div class="music-controls">
+            <button class="button music-button" id="musicButton" type="button" aria-pressed="false">
+              <span class="music-icon" aria-hidden="true">♪</span>
+              <span>musik 🎵</span>
+            </button>
+            <label class="volume-control" for="volumeSlider">
+              <span>lautstärke</span>
+              <input id="volumeSlider" type="range" min="0" max="100" value="60" />
+            </label>
+          </div>
+        </div>
+
+        <div class="song-strip">
+          <span class="disc" aria-hidden="true"></span>
+          <div>
+            <p class="song-label">aktueller song</p>
+            <p class="song-title" id="songTitleText"></p>
+          </div>
+        </div>
+        <p class="music-status" id="musicStatus"></p>
+        <audio id="loveSong" preload="auto" src="song.mp3" loop></audio>
+      </section>
+
+      <section class="finale-panel" id="finalePanel" hidden aria-live="polite">
+        <div class="finale-glow" aria-hidden="true"></div>
+        <p id="finaleText"></p>
+        <span id="finaleSignature"></span>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
