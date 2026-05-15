@@ -111,7 +111,7 @@ const miniTexts = {
   reasonIdle: "kleinigkeiten wieso ich dich liebe",
   memoryIdle: "meine lieblingsmomente",
   musicReady: "startet nach dem passwort.",
-  musicPlaying: "läuft im hintergrund für dich.",
+  musicPlaying: "ich hoffe ich habe eine passende musik ausgesucht :)",
   musicPaused: "ohne musik geht auch",
   musicBlocked: "wenn safari blockt, drück einmal auf musik 🎵",
   musicMissing: "song.mp3 fehlt noch, leg die datei in den sara ordner ❤️",
