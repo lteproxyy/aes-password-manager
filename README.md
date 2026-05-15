@@ -53,6 +53,20 @@ const photoSlots = [
 
 Wenn ein Bild fehlt, zeigt die Seite einfach einen schönen Platzhalter.
 
+## Passwort ändern
+
+Bevor die eigentliche Seite sichtbar wird, muss ein Passwort eingegeben werden.
+
+Das Passwort steht in `script.js`:
+
+```js
+const accessPassword = "13.01.2026";
+```
+
+Ändere nur den Text zwischen den Anführungszeichen.
+
+Wichtig: Das ist ein schöner Schutz für die Seite, aber kein echter geheimer Server-Login. Bei GitHub Pages liegt alles statisch im Browser.
+
 ## Songtitel ändern
 
 Öffne `script.js` und ändere ganz oben diese Zeile:

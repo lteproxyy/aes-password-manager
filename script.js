@@ -14,6 +14,7 @@
 const personName = "Sara";
 const nickname = "Dîlemin";
 const startDate = "2026-01-13";
+const accessPassword = "13.01.2026";
 
 // SONGTITEL ÄNDERN:
 const songTitle = "Lovers Rock - TV Girl";
@@ -111,6 +112,10 @@ const appShell = document.querySelector("#appShell");
 const openButton = document.querySelector("#openButton");
 const introCard = document.querySelector(".intro-card");
 const introBubbles = Array.from(document.querySelectorAll("[data-intro-step]"));
+const passwordScreen = document.querySelector("#passwordScreen");
+const passwordForm = document.querySelector("#passwordForm");
+const passwordInput = document.querySelector("#passwordInput");
+const passwordStatus = document.querySelector("#passwordStatus");
 
 const heroHello = document.querySelector("#heroHello");
 const heroNickname = document.querySelector("#heroNickname");
@@ -228,19 +233,53 @@ function revealCurrentIntroBubble(event) {
   revealNextIntroBubble(currentIntroStep);
 }
 
-function openApp() {
+function showPasswordGate() {
   introScreen.classList.add("is-hidden");
-  appShell.hidden = false;
+  passwordScreen.hidden = false;
 
   window.requestAnimationFrame(() => {
-    appShell.classList.add("is-visible");
+    passwordScreen.classList.add("is-visible");
   });
 
   createHeartBurst(openButton, 24, true);
 
   window.setTimeout(() => {
     introScreen.hidden = true;
+    passwordInput.focus();
   }, 560);
+}
+
+function unlockApp(event) {
+  event.preventDefault();
+
+  if (passwordInput.value.trim() !== accessPassword) {
+    passwordStatus.textContent = "nope, denk an unser datum ❤️";
+    passwordCardShake();
+    vibrate([20, 25, 20]);
+    passwordInput.select();
+    return;
+  }
+
+  passwordStatus.textContent = "richtig, natürlich ❤️";
+  passwordScreen.classList.add("is-hidden");
+  appShell.hidden = false;
+
+  window.requestAnimationFrame(() => {
+    appShell.classList.add("is-visible");
+  });
+
+  createHeartBurst(passwordInput, 24, true);
+
+  window.setTimeout(() => {
+    passwordScreen.hidden = true;
+  }, 560);
+}
+
+function passwordCardShake() {
+  const card = passwordScreen.querySelector(".password-card");
+  card.classList.remove("is-shaking");
+  void card.offsetWidth;
+  card.classList.add("is-shaking");
 }
 
 function updateCounter() {
@@ -425,7 +464,8 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-openButton.addEventListener("click", openApp);
+openButton.addEventListener("click", showPasswordGate);
+passwordForm.addEventListener("submit", unlockApp);
 reasonButton.addEventListener("click", showRandomReason);
 memoryButton.addEventListener("click", showRandomMemory);
 musicButton.addEventListener("click", toggleMusic);
