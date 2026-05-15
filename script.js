@@ -153,6 +153,8 @@ let musicStartedOnce = false;
 
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
+  passwordInput.type = "text";
+  passwordInput.removeAttribute("inputmode");
   passwordInput.placeholder = "(kleiner tipp: datum)";
   setMusicVolume(volumeSlider.value);
   counterTitle.textContent = miniTexts.counterTitle;
