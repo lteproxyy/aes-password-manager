@@ -84,12 +84,12 @@ const photoSlots = [
 ];
 
 const finalMessage = [
-  "ich könnte stundenland darüber reden wieso ich dich liebe mein alles.",
-  "aber ohne spaß,",
-  "der wichtigste grund bist einfach du sara,",
+  "ich könnte stundenlang darüber reden wieso ich dich liebe mein alles",
+  "aber ohne spaß",
+  "der wichtigste grund bist einfach du sara",
 ];
 
-const finalSignature = "für immer dein mensch";
+const finalSignature = "für immer meine frau";
 
 const miniTexts = {
   hero:
@@ -100,7 +100,7 @@ const miniTexts = {
   musicReady: "bereit",
   musicPlaying: "läuft gerade für dich.",
   musicPaused: "ohne musik geht auch",
-  musicMissing: "song.mp3 fehlt noch, aber alles ist bereit ❤️",
+  musicMissing: "song.mp3 fehlt noch aber der rest ist bereit❤️",
 };
 
 /* =========================================================
