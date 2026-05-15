@@ -27,6 +27,32 @@ Du brauchst keine Installation.
 3. Die Musik startet erst, wenn jemand auf den Button `musik 🎵` drückt.
 4. Wenn `song.mp3` fehlt, bleibt die Seite trotzdem funktionsfähig.
 
+## Eigene Bilder einfügen
+
+1. Erstelle im Ordner `sara` einen Ordner namens `bilder`.
+2. Lege deine Fotos dort ab.
+3. Standardmäßig sucht die Seite nach:
+
+```text
+bilder/foto-1.jpg
+bilder/foto-2.jpg
+bilder/foto-3.jpg
+bilder/foto-4.jpg
+```
+
+Wenn deine Dateien anders heißen, ändere in `script.js` den Bereich `photoSlots`:
+
+```js
+const photoSlots = [
+  {
+    src: "bilder/foto-1.jpg",
+    caption: "bild 1",
+  },
+];
+```
+
+Wenn ein Bild fehlt, zeigt die Seite einfach einen schönen Platzhalter.
+
 ## Songtitel ändern
 
 Öffne `script.js` und ändere ganz oben diese Zeile:
@@ -58,6 +84,7 @@ Dort kannst du ändern:
 - Startdatum
 - Liebessätze
 - schönste Momente
+- Bilder
 - finale Nachricht
 - Mini-Texte
 - Songtitel
@@ -82,6 +109,7 @@ Für die fertige Webseite brauchst du diese Dateien:
 - `style.css`
 - `script.js`
 - `README.md`
+- optional Ordner `bilder`
 - optional `song.mp3`
 
 Alles funktioniert ohne Frameworks, ohne Libraries, ohne Backend und ohne APIs.

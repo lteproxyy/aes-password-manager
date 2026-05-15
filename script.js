@@ -5,6 +5,7 @@
    - Startdatum
    - Liebessätze
    - schönste Momente
+   - Bilder
    - finale Nachricht
    - Mini-Texte
    - Songtitel
@@ -56,6 +57,31 @@ const bestMoments = [
   // "deine neue erinnerung",
 ];
 
+const photoSlots = [
+  {
+    src: "bilder/foto-1.jpg",
+    caption: "bild 1",
+  },
+  {
+    src: "bilder/foto-2.jpg",
+    caption: "bild 2",
+  },
+  {
+    src: "bilder/foto-3.jpg",
+    caption: "bild 3",
+  },
+  {
+    src: "bilder/foto-4.jpg",
+    caption: "bild 4",
+  },
+
+  // Weitere Bilder hier hinzufügen:
+  // {
+  //   src: "bilder/dein-bild.jpg",
+  //   caption: "dein text",
+  // },
+];
+
 const finalMessage = [
   "ich könnte stundenland darüber reden wieso ich dich liebe mein alles.",
   "aber ohne spaß,",
@@ -93,6 +119,7 @@ const daysCount = document.querySelector("#daysCount");
 const hoursCount = document.querySelector("#hoursCount");
 const minutesCount = document.querySelector("#minutesCount");
 const togetherLine = document.querySelector("#togetherLine");
+const photoGrid = document.querySelector("#photoGrid");
 
 const reasonButton = document.querySelector("#reasonButton");
 const reasonText = document.querySelector("#reasonText");
@@ -131,6 +158,7 @@ function init() {
   finaleSignature.textContent = finalSignature;
 
   setupIntroBubbles();
+  renderPhotoSlots();
   updateCounter();
   window.setInterval(updateCounter, 1000);
 }
@@ -228,6 +256,44 @@ function updateCounter() {
   hoursCount.textContent = String(hours).padStart(2, "0");
   minutesCount.textContent = String(minutes).padStart(2, "0");
   togetherLine.textContent = `${days} tage zusammen`;
+}
+
+function renderPhotoSlots() {
+  if (!photoGrid) {
+    return;
+  }
+
+  photoGrid.textContent = "";
+
+  photoSlots.forEach((photo, index) => {
+    const card = document.createElement("article");
+    const image = document.createElement("img");
+    const placeholder = document.createElement("div");
+    const icon = document.createElement("span");
+    const caption = document.createElement("p");
+
+    card.className = "photo-card";
+    image.src = photo.src;
+    image.alt = photo.caption || `bild ${index + 1}`;
+    image.loading = "lazy";
+    placeholder.className = "photo-placeholder";
+    icon.className = "photo-icon";
+    icon.textContent = "♡";
+    caption.textContent = photo.caption || `bild ${index + 1}`;
+
+    image.addEventListener("load", () => {
+      card.classList.add("has-photo");
+    });
+
+    image.addEventListener("error", () => {
+      image.remove();
+      card.classList.add("is-empty");
+    });
+
+    placeholder.append(icon, caption);
+    card.append(image, placeholder);
+    photoGrid.append(card);
+  });
 }
 
 function showRandomReason() {
