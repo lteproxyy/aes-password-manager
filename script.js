@@ -37,7 +37,7 @@ const loveReasons = [
 ];
 
 const bestMoments = [
-  "die ersten wintertage bei -10°, wo ich dir meine jacke gegeben habe",
+  "die ersten wintertage bei -10° wo ich dir meine jacke gegeben habe",
   "wo wir nachts bis um 5:00 geschrieben haben obwohl wir am nächsten tag schule hatten",
   "jeder augenkontakt mit dir",
   "wo ich realisiert habe wie sehr ich dich liebe",
@@ -57,20 +57,22 @@ const bestMoments = [
 ];
 
 const finalMessage = [
-  "ich könnte dir tausend gründe geben warum ich dich liebe",
-  "aber ehrlich herz",
-  "der wichtigste grund bist einfach du ❤️",
+  "ich könnte stundenland darüber reden wieso ich dich liebe mein alles.",
+  "aber ohne spaß,",
+  "der wichtigste grund bist einfach du sara,",
 ];
 
 const finalSignature = "für immer dein mensch";
 
 const miniTexts = {
+  hero:
+    "ich habe das programmiert um dir zu zeigen wie sehr ich in dich verliebt bin und damit du 24/7 sehen kannst wieso ich dich so sehr liebe",
   counterTitle: "seit dem 13.01.2026 bist du mein lieblingsmensch ❤️",
-  reasonIdle: "drück auf den knopf, ich hab da paar sachen gesammelt wa dikka ❤️",
-  memoryIdle: "hier wohnen unsere kleinen momente, die ich nie vergessen will ✨",
-  musicReady: "bereit, sobald du auf musik drückst.",
+  reasonIdle: "drück drauf mein herz",
+  memoryIdle: "hier sind coole errinerungen",
+  musicReady: "bereit",
   musicPlaying: "läuft gerade für dich.",
-  musicPaused: "pausiert, aber die vibes bleiben.",
+  musicPaused: "ohne musik geht auch",
   musicMissing: "song.mp3 fehlt noch, aber alles ist bereit ❤️",
 };
 
