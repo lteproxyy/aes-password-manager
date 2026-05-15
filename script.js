@@ -17,7 +17,7 @@ const startDate = "2026-01-13";
 const accessPassword = "13.01.2026";
 
 // SONGTITEL ÄNDERN:
-const songTitle = "Lovers Rock - TV Girl";
+const songTitle = "AzadiJihan - Derya Dilê";
 
 const loveReasons = [
   "du malst meine graue welt bunt",

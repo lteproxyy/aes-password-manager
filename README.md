@@ -27,6 +27,12 @@ Du brauchst keine Installation.
 3. Die Musik startet erst, wenn jemand auf den Button `musik 🎵` drückt.
 4. Wenn `song.mp3` fehlt, bleibt die Seite trotzdem funktionsfähig.
 
+Aktuell ist als Songtitel `AzadiJihan - Derya Dilê` eingestellt. Du kannst den Song legal über Pixabay laden und dann als `song.mp3` in den Ordner legen:
+
+```text
+https://pixabay.com/music/world-derya-dil%C3%AA-400066/
+```
+
 ## Eigene Bilder einfügen
 
 1. Erstelle im Ordner `sara` einen Ordner namens `bilder`.
