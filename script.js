@@ -62,7 +62,7 @@ const bestMoments = [
   // "wo ich abends noch vor dein fenster gekommen bin und diesen kleinen liebestext in der schhokoladen tafel von dir gekriegt habe",
   // "",
   // "unser erster kuss auf UNSERER bank",
-  // "die krakau fahrt im allgemeinen jeder tag",
+  // "der motoröl shwawarma",
   // "06.03.2026",
 ];
 
@@ -70,22 +70,22 @@ const photoSlots = [
   {
     src: "bilder/sara:bilder:foto-1.jpg",
     caption: "bild 1",
-    info: "hier deinen text zu bild 1 reinschreiben",
+    info: "**.**.****",
   },
   {
     src: "bilder/sara:bilder:foto-2.jpg",
     caption: "bild 2",
-    info: "hier deinen text zu bild 2 reinschreiben",
+    info: "17.02.2026",
   },
   {
     src: "bilder/sara:bilder:foto-3.jpg",
     caption: "bild 3",
-    info: "hier deinen text zu bild 3 reinschreiben",
+    info: "07.03.2026",
   },
   {
     src: "bilder/sara:bilder:foto-4.jpg",
     caption: "bild 4",
-    info: "hier deinen text zu bild 4 reinschreiben",
+    info: "26.02.2026",
   },
 
   // Weitere Bilder hier hinzufügen:
@@ -341,7 +341,7 @@ function renderPhotoSlots() {
     caption.textContent = photo.caption || `bild ${index + 1}`;
     infoButton.className = "photo-info-button";
     infoButton.type = "button";
-    infoButton.textContent = "i";
+    infoButton.textContent = "ⓘ";
     infoButton.setAttribute("aria-label", `info zu bild ${index + 1}`);
     infoButton.setAttribute("aria-expanded", "false");
     infoButton.setAttribute("aria-controls", infoId);
