@@ -85,8 +85,6 @@ const appShell = document.querySelector("#appShell");
 const openButton = document.querySelector("#openButton");
 const introCard = document.querySelector(".intro-card");
 const introBubbles = Array.from(document.querySelectorAll("[data-intro-step]"));
-const introHello = document.querySelector("#introHello");
-const introNickname = document.querySelector("#introNickname");
 
 const heroHello = document.querySelector("#heroHello");
 const heroNickname = document.querySelector("#heroNickname");
@@ -122,8 +120,6 @@ let currentIntroStep = 0;
 
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
-  introHello.textContent = `hey ${personName.toLowerCase()},`;
-  introNickname.textContent = `${nickname.toLowerCase()} ❤️`;
   heroHello.textContent = `hey ${personName.toLowerCase()},`;
   heroNickname.textContent = `${nickname.toLowerCase()} ❤️`;
   counterTitle.textContent = miniTexts.counterTitle;
