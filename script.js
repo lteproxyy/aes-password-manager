@@ -341,7 +341,7 @@ function renderPhotoSlots() {
     caption.textContent = photo.caption || `bild ${index + 1}`;
     infoButton.className = "photo-info-button";
     infoButton.type = "button";
-    infoButton.textContent = "ⓘ";
+    infoButton.textContent = "i";
     infoButton.setAttribute("aria-label", `info zu bild ${index + 1}`);
     infoButton.setAttribute("aria-expanded", "false");
     infoButton.setAttribute("aria-controls", infoId);
