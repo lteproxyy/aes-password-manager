@@ -32,7 +32,7 @@ const loveReasons = [
   "weil du die frau bist mit der ich alt werden will",
   "du bist der einzige mensch bei dem ich mich komplett wohl fühle und dem ich 100% vertraue",
   "weil ich dein essen liebe",
-  "weil man dir alleserzählen kann",
+  "weil man dir alles erzählen kann",
 
   // Weitere Liebessätze hier hinzufügen:
   // "weil wir so lustige insider haben",
@@ -158,7 +158,7 @@ const volumeSlider = document.querySelector("#volumeSlider");
 const loveSong = document.querySelector("#loveSong");
 
 let reasonClicks = 0;
-let lastReason = "";
+const recentReasons = [];
 let lastMoment = "";
 let finaleShown = false;
 let currentIntroStep = 0;
@@ -400,8 +400,9 @@ function closePhotoInfos(exceptCard = null) {
 
 function showRandomReason() {
   reasonClicks += 1;
-  lastReason = pickRandom(loveReasons, lastReason);
-  reasonText.textContent = lastReason;
+  const selectedReason = pickRandomWithoutRecent(loveReasons, recentReasons, 4);
+  rememberRandomPick(recentReasons, selectedReason, 4);
+  reasonText.textContent = selectedReason;
   animateCard(reasonCard);
   createHeartBurst(reasonButton, 18, false);
   vibrate(18);
@@ -446,6 +447,30 @@ function pickRandom(list, previous) {
   }
 
   return selected;
+}
+
+function pickRandomWithoutRecent(list, recent, blockedCount) {
+  if (!list.length) {
+    return "";
+  }
+
+  const blocked = new Set(recent.slice(-blockedCount));
+  const choices = list.filter((item) => !blocked.has(item));
+  const candidates = choices.length ? choices : list;
+
+  return candidates[Math.floor(Math.random() * candidates.length)];
+}
+
+function rememberRandomPick(history, value, limit) {
+  if (!value) {
+    return;
+  }
+
+  history.push(value);
+
+  while (history.length > limit) {
+    history.shift();
+  }
 }
 
 function animateCard(card) {
