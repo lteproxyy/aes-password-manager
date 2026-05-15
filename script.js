@@ -97,10 +97,10 @@ const miniTexts = {
   counterTitle: "seit dem 13.01.2026 bist du mein lieblingsmensch ❤️",
   reasonIdle: "drück drauf mein herz",
   memoryIdle: "hier sind coole errinerungen",
-  musicReady: "bereit",
-  musicPlaying: "läuft gerade für dich.",
+  musicReady: "startet nach dem passwort.",
+  musicPlaying: "läuft im hintergrund für dich.",
   musicPaused: "ohne musik geht auch",
-  musicMissing: "song.mp3 fehlt noch aber der rest ist bereit❤️",
+  musicMissing: "song.mp3 fehlt noch, leg die datei in den sara ordner ❤️",
 };
 
 /* =========================================================
@@ -147,10 +147,12 @@ let lastReason = "";
 let lastMoment = "";
 let finaleShown = false;
 let currentIntroStep = 0;
+let musicStartedOnce = false;
 
 function init() {
   document.title = `Warum ich dich liebe ❤️`;
   passwordInput.placeholder = "(kleiner tipp: datum)";
+  loveSong.volume = 0.6;
   counterTitle.textContent = miniTexts.counterTitle;
   reasonText.textContent = miniTexts.reasonIdle;
   memoryText.textContent = miniTexts.memoryIdle;
@@ -266,6 +268,7 @@ function unlockApp(event) {
   });
 
   createHeartBurst(passwordInput, 24, true);
+  startBackgroundMusic();
 
   window.setTimeout(() => {
     passwordScreen.hidden = true;
@@ -427,18 +430,32 @@ function vibrate(pattern) {
   }
 }
 
+async function startBackgroundMusic() {
+  if (!loveSong) {
+    return;
+  }
+
+  if (!loveSong.paused) {
+    updateMusicState(true, miniTexts.musicPlaying);
+    return;
+  }
+
+  try {
+    await loveSong.play();
+    musicStartedOnce = true;
+    updateMusicState(true, miniTexts.musicPlaying);
+  } catch (error) {
+    updateMusicState(false, miniTexts.musicMissing);
+  }
+}
+
 async function toggleMusic() {
   if (!loveSong) {
     return;
   }
 
   if (loveSong.paused) {
-    try {
-      await loveSong.play();
-      updateMusicState(true, miniTexts.musicPlaying);
-    } catch (error) {
-      updateMusicState(false, miniTexts.musicMissing);
-    }
+    await startBackgroundMusic();
     return;
   }
 
@@ -467,6 +484,10 @@ reasonButton.addEventListener("click", showRandomReason);
 memoryButton.addEventListener("click", showRandomMemory);
 musicButton.addEventListener("click", toggleMusic);
 loveSong.addEventListener("ended", () => updateMusicState(false, miniTexts.musicPaused));
-loveSong.addEventListener("error", () => updateMusicState(false, miniTexts.musicMissing));
+loveSong.addEventListener("error", () => {
+  if (!musicStartedOnce) {
+    updateMusicState(false, miniTexts.musicMissing);
+  }
+});
 
 init();
